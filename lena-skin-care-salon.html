@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lena Skin Care Salon | سالن زیبایی لنا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink: #f6d9e2;
+    --pink-deep: #e8a8c0;
+    --green: #d9ecdd;
+    --green-deep: #a3cdb0;
+    --white: #fffdfb;
+    --ink: #4a3b41;
+    --ink-soft: #7d6a70;
+    --line: #ecd9de;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Vazirmatn', sans-serif;
+    background:var(--white);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+  .brand-en{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    letter-spacing:0.5px;
+  }
+
+  /* ---------- Background blobs ---------- */
+  .blob-field{
+    position:absolute; inset:0; overflow:hidden; z-index:0; pointer-events:none;
+  }
+  .blob-field svg{position:absolute;}
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,253,251,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    max-width:1120px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+  }
+  .logo-mark{
+    width:38px; height:38px; flex-shrink:0;
+  }
+  .logo-text{
+    display:flex; flex-direction:column; line-height:1;
+  }
+  .logo-text .en{ font-size:20px; color:var(--ink); }
+  .logo-text .fa{ font-size:12px; color:var(--ink-soft); margin-top:3px; }
+  .nav-links{
+    display:flex; gap:28px; list-style:none;
+  }
+  .nav-links a{
+    text-decoration:none; color:var(--ink); font-size:15px; font-weight:500;
+    position:relative; padding-bottom:4px;
+  }
+  .nav-links a::after{
+    content:""; position:absolute; right:0; bottom:0; width:0; height:2px;
+    background:var(--pink-deep); transition:width .3s ease;
+  }
+  .nav-links a:hover::after{ width:100%; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    min-height:88vh;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    padding:80px 24px 60px;
+  }
+  .hero-inner{ position:relative; z-index:2; max-width:760px; }
+  .eyebrow{
+    display:inline-block;
+    font-size:14px; letter-spacing:2px;
+    color:var(--pink-deep); font-weight:600;
+    border:1px solid var(--pink-deep);
+    padding:6px 18px; border-radius:30px;
+    margin-bottom:28px;
+    background:rgba(255,255,255,0.6);
+  }
+  .hero h1{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:clamp(42px, 8vw, 78px);
+    color:var(--ink);
+    margin-bottom:10px;
+    line-height:1.1;
+  }
+  .hero h2{
+    font-size:clamp(22px, 4vw, 30px);
+    font-weight:700;
+    margin-bottom:22px;
+    background:linear-gradient(90deg, var(--pink-deep), var(--green-deep));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero p.tagline{
+    font-size:17px; color:var(--ink-soft); line-height:2;
+    max-width:620px; margin:0 auto 34px;
+  }
+  .hero .city-pill{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:14px; color:var(--ink);
+    background:var(--green); padding:8px 20px; border-radius:30px;
+    border:1px solid var(--green-deep);
+  }
+  .cta-btn{
+    display:inline-block; margin-top:30px;
+    background:linear-gradient(90deg, var(--pink-deep), #eec0d3);
+    color:#fff; font-weight:700; font-size:16px;
+    padding:15px 42px; border-radius:40px;
+    text-decoration:none;
+    box-shadow:0 14px 30px -10px rgba(232,168,192,0.7);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .cta-btn:hover{ transform:translateY(-3px); box-shadow:0 18px 34px -8px rgba(232,168,192,0.85); }
+
+  /* ---------- Section shells ---------- */
+  section{ position:relative; padding:90px 24px; }
+  .section-head{
+    text-align:center; max-width:640px; margin:0 auto 56px;
+  }
+  .section-head .eyebrow-line{
+    display:flex; align-items:center; justify-content:center; gap:14px;
+    margin-bottom:16px;
+  }
+  .section-head .eyebrow-line span{
+    font-size:13px; letter-spacing:3px; color:var(--green-deep); font-weight:700;
+  }
+  .section-head .eyebrow-line i{
+    display:block; width:40px; height:1px; background:var(--green-deep);
+  }
+  .section-head h3{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:clamp(30px,5vw,44px); color:var(--ink);
+  }
+
+  /* ---------- Statement banner ---------- */
+  .statement{
+    background:linear-gradient(120deg, var(--green) 0%, var(--pink) 100%);
+    border-radius:28px;
+    max-width:1080px; margin:0 auto;
+    padding:48px 40px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .statement p{
+    font-size:clamp(17px,2.4vw,22px);
+    font-weight:600;
+    color:var(--ink);
+    line-height:2.1;
+    position:relative; z-index:1;
+  }
+
+  /* ---------- Services ---------- */
+  .services-wrap{ max-width:1000px; margin:0 auto; }
+  .service-table{
+    width:100%; border-collapse:separate; border-spacing:0 14px;
+  }
+  .service-table tr{
+    background:var(--white);
+  }
+  .service-row{
+    display:grid;
+    grid-template-columns:56px 1fr auto;
+    align-items:center;
+    gap:18px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:20px 26px;
+    transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+  }
+  .service-row:hover{
+    border-color:var(--pink-deep);
+    transform:translateY(-2px);
+    box-shadow:0 16px 30px -18px rgba(232,168,192,0.9);
+  }
+  .service-num{
+    width:44px; height:44px; border-radius:50%;
+    background:var(--green);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; color:var(--ink); font-size:15px;
+    border:1px solid var(--green-deep);
+  }
+  .service-name{
+    font-size:17px; font-weight:600; color:var(--ink);
+  }
+  .service-price{
+    font-weight:800; font-size:17px; color:var(--pink-deep);
+    white-space:nowrap;
+    display:flex; align-items:baseline; gap:5px;
+  }
+  .service-price .toman{ font-size:13px; font-weight:600; color:var(--ink-soft); }
+
+  /* ---------- Location ---------- */
+  .location-card{
+    max-width:760px; margin:0 auto;
+    background:linear-gradient(135deg, var(--pink) 0%, var(--white) 60%);
+    border:1px solid var(--line);
+    border-radius:28px;
+    padding:48px 40px;
+    text-align:center;
+  }
+  .location-card .city{
+    font-family:'Cormorant Garamond', serif; font-style:italic;
+    font-size:38px; color:var(--ink); margin-bottom:10px;
+  }
+  .location-card p{ color:var(--ink-soft); font-size:16px; }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--ink);
+    color:#f6eceb;
+    padding:50px 24px 30px;
+    text-align:center;
+  }
+  footer .logo-text .en{ color:#fff; }
+  footer p{ color:#e3cfd6; font-size:14px; margin-top:14px; }
+  footer .divider{
+    width:60px; height:2px; background:var(--pink-deep);
+    margin:22px auto;
+  }
+
+  @media (max-width:640px){
+    .service-row{ grid-template-columns:40px 1fr; }
+    .service-price{ grid-column:1/-1; justify-content:flex-start; padding-right:58px; }
+    nav{ padding:14px 18px; }
+    .nav-links{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header>
+  <nav>
+    <div class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="19" fill="#f6d9e2" stroke="#e8a8c0"/>
+        <path d="M20 8C20 8 12 15 12 22C12 26.4183 15.5817 30 20 30C24.4183 30 28 26.4183 28 22C28 15 20 8 20 8Z" fill="#d9ecdd" stroke="#a3cdb0"/>
+      </svg>
+      <div class="logo-text">
+        <span class="en brand-en">Lena Skin Care Salon</span>
+        <span class="fa">سالن تخصصی زیبایی و مراقبت پوست</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">درباره ما</a></li>
+      <li><a href="#services">خدمات و قیمت‌ها</a></li>
+      <li><a href="#location">موقعیت مکانی</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="blob-field">
+    <svg width="500" height="500" style="top:-120px; right:-150px;" viewBox="0 0 500 500">
+      <circle cx="250" cy="250" r="250" fill="#f6d9e2" opacity="0.6"/>
+    </svg>
+    <svg width="420" height="420" style="bottom:-160px; left:-140px;" viewBox="0 0 420 420">
+      <circle cx="210" cy="210" r="210" fill="#d9ecdd" opacity="0.7"/>
+    </svg>
+  </div>
+  <div class="hero-inner">
+    <span class="eyebrow">TEHRAN · تهران</span>
+    <h1 class="brand-en">Lena Skin Care Salon</h1>
+    <h2>سالن زیبایی و مراقبت پوست لنا</h2>
+    <p class="tagline">
+      تمام لاین ها با لوکس‌ترین برند ها و بهترین متریال و تخصصی‌ترین دستگاه ها انجام می‌شود همراه با هدیه و کارت تخفیف برای زیبا جویان عزیز
+    </p>
+    <span class="city-pill">📍 تهران</span>
+    <br>
+    <a href="#services" class="cta-btn">مشاهده خدمات و قیمت‌ها</a>
+  </div>
+</section>
+
+<!-- ================= STATEMENT ================= -->
+<section id="about" style="padding-top:0;">
+  <div class="statement">
+    <p>
+      تمام لاین ها با لوکس‌ترین برند ها و بهترین متریال و تخصصی‌ترین دستگاه ها انجام می‌شود<br>
+      همراه با هدیه و کارت تخفیف برای زیبا جویان عزیز
+    </p>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services">
+  <div class="section-head">
+    <div class="eyebrow-line"><i></i><span>خدمات سالن</span><i></i></div>
+    <h3>لیست خدمات و قیمت‌ها</h3>
+  </div>
+
+  <div class="services-wrap">
+    <div class="service-row">
+      <div class="service-num">۱</div>
+      <div class="service-name">فشیال تخصصی صورت</div>
+      <div class="service-price">۱/۵۰۰/۰۰۰ <span class="toman">تومان</span></div>
+    </div>
+    <div class="service-row">
+      <div class="service-num">۲</div>
+      <div class="service-name">فشیال VIP صورت</div>
+      <div class="service-price">۲/۲۰۰/۰۰۰ <span class="toman">تومان</span></div>
+    </div>
+    <div class="service-row">
+      <div class="service-num">۳</div>
+      <div class="service-name">فشیال تخصصی دور چشم</div>
+      <div class="service-price">۱/۵۰۰/۰۰۰ <span class="toman">تومان</span></div>
+    </div>
+    <div class="service-row">
+      <div class="service-num">۴</div>
+      <div class="service-name">لیفت صورت</div>
+      <div class="service-price">۱/۵۰۰/۰۰۰ <span class="toman">تومان</span></div>
+    </div>
+    <div class="service-row">
+      <div class="service-num">۵</div>
+      <div class="service-name">پلاژن تراپی، جوانساز و روشن کننده</div>
+      <div class="service-price">۱/۵۰۰/۰۰۰ <span class="toman">تومان</span></div>
+    </div>
+    <div class="service-row">
+      <div class="service-num">۶</div>
+      <div class="service-name">کربن تراپی و کنترل چربی پوست</div>
+      <div class="service-price">۱/۵۰۰/۰۰۰ <span class="toman">تومان</span></div>
+    </div>
+    <div class="service-row">
+      <div class="service-num">۷</div>
+      <div class="service-name">مزونیدلینگ صورت</div>
+      <div class="service-price">۲/۰۰۰/۰۰۰ <span class="toman">تومان</span></div>
+    </div>
+    <div class="service-row">
+      <div class="service-num">۸</div>
+      <div class="service-name">مزونیدلینگ چشم</div>
+      <div class="service-price">۱/۵۰۰/۰۰۰ <span class="toman">تومان</span></div>
+    </div>
+    <div class="service-row">
+      <div class="service-num">۹</div>
+      <div class="service-name">نور درمانی و کلسیوم تراپی</div>
+      <div class="service-price">۹۵۰/۰۰۰ <span class="toman">تومان</span></div>
+    </div>
+    <div class="service-row">
+      <div class="service-num">۱۰</div>
+      <div class="service-name">آبرسانی و جوانسازی صورت</div>
+      <div class="service-price">۱/۰۰۰/۰۰۰ <span class="toman">تومان</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LOCATION ================= -->
+<section id="location">
+  <div class="location-card">
+    <div class="city">تهران</div>
+    <p>سالن زیبایی و مراقبت پوست لنا</p>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="logo" style="justify-content:center;">
+    <div class="logo-text" style="align-items:center;">
+      <span class="en brand-en">Lena Skin Care Salon</span>
+      <span class="fa">سالن تخصصی زیبایی و مراقبت پوست</span>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <p>تهران</p>
+</footer>
+
+</body>
+</html>
